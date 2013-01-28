@@ -1,0 +1,661 @@
+/*
+  核心内容，包括Phone/Pad/PC版本都会用到的样式
+  通用全局性的样式，以mf_前缀打头
+
+*/
+@link-color: #7DC9FE;
+@link-hover-color: #075bba;
+@main-image: url(../../images/main.png);
+@retina-main-image: url(../../images/main@2x.png);
+@max-width: 1000px;
+@button-radius: 2px;
+//默认圆角的大小
+@radius: 4px;
+//默认边线的颜色
+@border-color: #ebebeb;
+//与bubble相关
+@bubble-arrow-width: 15px;
+@bubble-arrow-color: #CCC;
+
+//文字的颜色
+@text-color: #666666;
+@purple-begin: #DB13F3;
+@purple-to: #AC038A;
+@blue-begin: #7DC9FE;
+@blue-to: #075896;
+@green-begin: #C6D705;
+@green-to: #368E06;
+
+@download-image: url(../../images/download.png) no-repeat;
+@menu-padding-right: 0em;
+
+//==============================定义函数================
+//透明度背景
+.white-transparent(@o: 0.9){
+  background-color: rgba(255, 255, 255, @o);
+}
+//边线
+.border (@w: 1px, @c: @border-color, @s: solid){
+  border: @arguments;
+}
+
+//box布局
+.display-box{
+  display: -webkit-box;
+  display: -ms-box;
+  display: -o-box;
+  display: -moz-box;
+  display: box;
+}
+
+.box-flex(@v: 1){
+  -webkit-box-flex: @v;
+  -ms-box-flex: @v;
+  -moz-box-flex: @v;
+  -o-box-flex: @v;
+  box-flex: @v;
+}
+
+//使用main的背景图片样式
+.main-image-css(@x, @y){
+  .background-image(@main-image, @retina-main-image, 400px, 400px, @x, @y);
+}
+
+.background-image(@img, @img2x, @width, @height, @x: 0, @y: 0){
+  //background-position: @x @y;
+  background: @img no-repeat @x @y;
+
+  //视网膜屏
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (-moz-device-pixel-ratio: 2),
+  (min--moz-device-pixel-ratio: 2),
+  (min-resolution: "2dppx"),
+  (min-device-pixel-ratio: 2){
+    background: @img2x no-repeat @x @y;
+    -webkit-background-size: @width @height;
+    background-size: @width @height;
+    -moz-background-size: @width @height;
+  }
+}
+
+//边线的圆角
+.border-radius (@r: @radius){
+  border-radius: @arguments;
+  -webkit-border-radius: @arguments;
+  -moz-border-radius: @arguments;
+  -o-border-radius: @arguments;
+  -ms-border-radius: @arguments;
+}
+
+//线性渐变
+.linear-gradient(@begin, @to){
+ // ~filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='@begin', endColorstr='@to');
+  background-color: @begin;   //兼容不支持渐变色的浏览器
+  background: -moz-linear-gradient(top, @begin, @to);
+  background: -webkit-linear-gradient(top, @begin, @to);
+  background: -o-linear-gradient(top, @begin, @to);
+}
+
+//阴影
+.box-shadow(@size, @color){
+  box-shadow:  0px 0px @size @color;
+}
+
+//=============================针对元素的css样式==================
+body
+{
+  //.linear-gradient(#f2f5ff, #FFFFFF);
+  text-align: center;
+  color: @text-color;
+  font-family: Arial;
+  font-size: 63%;
+  line-height: 150%;
+  font-family: Verdana, "Helvetica Neue", Tahoma, Arial;
+}
+
+body *
+{
+  font-size: 1.05em;
+}
+
+//链接的颜色
+a.link{
+  cursor: pointer;
+  color: @link-color;
+  text-decoration: underline;
+}
+
+#msgbox{
+  position: absolute;
+  z-index: 9999;
+  top: -200px;
+  min-height: 25px;
+  overflow: hidden;
+  .white-transparent(0.95);
+  line-height: 150%;
+}
+
+//提示
+.mf_tooltip{
+  background-color: #FFF6BF;
+  border: #FFD324;
+}
+
+//链接带icon的
+.mf_iconLink{
+  span{
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    display: inline-block;
+  }
+
+  button{
+    display: none;
+  }
+}
+
+button{
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  span.icon{
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+  }
+}
+
+//一般按钮
+button.normal{
+  padding: 5px;
+  min-width: 80px;
+  min-height: 34px;
+  font-size: 1.4em;
+  color: @text-color;
+  .linear-gradient(rgba(144, 145, 146, 0.6), rgba(199, 196, 196, 0.6));
+  .border-radius(@button-radius);
+}
+
+button.bar{
+  margin: 10px 5px 5px 5px;
+  width:308px;
+  height:46px;
+  font-size: 2em;
+  color: #FFF;
+  clear: both;
+  .border-radius(10px);
+  border: 2px solid rgba(0, 0, 0, 0.8);
+
+  &.pressed{
+    color: #000;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    opacity: 0.6;
+  }
+
+  &.blue{
+    .linear-gradient(@blue-begin, @blue-to);
+  }
+
+  &.green{
+    .linear-gradient(@green-begin, @green-to);
+  }
+
+  &.purple{
+    .linear-gradient(@purple-begin, @purple-to);
+  }
+}
+
+//普通按钮高亮显示
+button.highlight
+{
+  .linear-gradient(@blue-begin, @blue-to);
+  color:#FFF;
+}
+
+button.selected{
+  color: #FFF;
+}
+
+//圆型按钮
+button.round
+{
+  width: 41px;
+  height: 41px;
+}
+
+//禁止某个选择框
+input[disabled], input.disabled{
+  background-color: #CCC;
+  text-decoration: line-through;
+}
+
+//
+input[type="text"], input[type="password"], textarea, input[type="email"]
+{
+  .border(1px, solid, #CCC);
+  outline: 0 none;
+  font-size: 1.2em;
+  .border-radius();
+  color: @text-color;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-user-select:text !important;
+  -webkit-box-shadow: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"], input[type="password"], input[type="eemail"]{
+  height: 30px;
+  width: 160px;
+}
+
+textarea{
+  resize: none;
+}
+
+ul, body, li, menu
+{
+  margin: 0;
+  padding: 0;
+}
+
+li
+{
+  list-style: none;
+  text-align: left;
+}
+
+//===============================其它公用样式===============
+//复选框
+.mf_checkbox
+{
+  overflow: hidden;
+  .select-disabled;
+}
+
+.mf_checkbox>*, .mf_checkbox
+{
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+
+.mf_checkbox span
+{
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  .border(2px, solid, #999);
+}
+
+//选中的列表
+.mf_checkbox.mf_checked span
+{
+  background-color: #AC038A;
+}
+
+.mf_slider
+{
+  width: 150px;
+  margin: 8px;
+  height: 10px;
+}
+
+.mf_slider .mf_line, .mf_slider .mf_mask
+{
+  width: 100%;
+  height: 10px;
+  -webkit-border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 6px #CCC;
+  background: -webkit-gradient(linear,0% 0%, 0% 100%, from(#838383), to(#FFFFFF), color-stop(0.5,#F1F1F1));
+}
+
+.mf_slider .mf_mask
+{
+  width: 0;
+  position:relative;
+  left: 0px;
+  top: -10px;
+  -webkit-border-radius: 4px 0 0 4px;
+  background: -webkit-gradient(linear,0% 0%, 0% 100%, from(#3368ba), to(#71a7f1));
+}
+
+.mf_slider .mf_handler
+{
+  position:relative;
+  top: -26px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  //margin-left: -310px;
+  background: -webkit-gradient(linear,0% 0%, 0% 100%, from(#ababab), to(#f8f8f8));
+  -webkit-border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 6px #CCC;
+  border: 1px solid #ededed;
+}
+
+
+.mf_slider .mf_handler.active
+{
+  background: -webkit-gradient(linear,0% 49%, 0% 50%, from(#6DA6FA), to(#2E70E3));
+  -webkit-box-shadow: 0px 0px 6px #666;
+  border: 1px solid #0b3a8b;
+}
+
+.mf_disabled .mf_mask{
+  background: -webkit-gradient(linear,0% 0%, 0% 100%, from(#ababab), to(#f8f8f8));
+}
+//ios样式的checkbox
+/*
+body.iOS{
+  .mf_checkbox{
+    width: 94px;
+  }
+}
+
+.switch>div
+{
+  background:url(images/default/switch.png) no-repeat;
+  width: 148px;
+  height: 27px;
+  -webkit-background-size: 100%;
+  color: #FFF;
+  font-size: 1.6em;
+  font-weight: bold;
+  -webkit-transition:margin-left 300ms ease;
+}
+
+.switch.off>div
+{
+  background:url(images/default/switch-off.png) right center no-repeat;
+  -webkit-background-size: 94px 27px;
+  margin-left: -54px;
+}
+
+.switch.on>div
+{
+  background:url(images/default/switch-on.png) left center no-repeat;
+  -webkit-background-size: 94px 27px;
+  margin-left: 0px;
+}
+
+.switch span
+{
+  margin-top: 4px;
+  display:inline-block;
+  width: 54px;
+  text-align: center;
+}
+
+.switch .on
+{
+  float: left;
+}
+
+.switch .off
+{
+  float: right;
+  color: #9a9a9a;
+}
+*/
+//三色线
+.mf_colorLine
+{
+  width: 100%;
+  div{
+    height: 4px;
+    float: left;
+  }
+
+  .purple{
+    width: 33%;
+    background-color: @purple-begin;
+  }
+
+  .green{
+    width: 34%;
+    background-color: @green-begin;
+  }
+
+  .blue{
+    width: 33%;
+    background-color: @blue-begin;
+  }
+}
+
+//=================色带================
+.mf_ribbon{
+  a{
+    display: block;
+    cursor: pointer;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 0 12px 10px 0;
+    .border-radius();
+
+    //选择后显示的icon
+    span{
+      display: none;
+      width: 20px;
+      height: 20px;
+      margin: 9px;
+      background-position: -125px -150px;
+    }
+
+    //选中后，显示icon
+    &.selected span{
+      display: inline-block;
+    }
+  }
+}
+
+label.caption{
+  display: inline-block;
+  width: 180px;
+  font-size: 1.6em;
+}
+
+.mf_editor > li{
+  padding: 20px 0;
+}
+
+
+.imgMain{
+  .main-image-css(0, 0);
+}
+
+//错误的输入
+input.mf_error
+{
+  color: red;
+  text-decoration: line-through;
+}
+
+//bubble的样式
+.mf_bubble {
+  //.box-shadow(5px, #efefef);
+  border: 2px solid @border-color;
+  .border-radius(6px);
+  padding: 10px;
+  position: relative;
+
+  &:after {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: @bubble-arrow-color;
+    border-width: @bubble-arrow-width;
+    left: 80%;    //箭头的位置
+  }
+
+  &.right:after{
+    border-color: transparent @bubble-arrow-color;
+    border-width: @bubble-arrow-width 0 @bubble-arrow-width @bubble-arrow-width;
+    bottom: auto;
+    left: auto;
+    right: -@bubble-arrow-width;
+    top: 20%;
+  }
+}
+
+.mf_hide
+{
+  display: none;
+}
+
+//禁止可选
+.select-disabled{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+}
+
+/*
+h3.large
+{
+  font-size: 2em;
+  padding: 10px 40px;
+  border-bottom: 5px solid #F90;
+  text-align: center;
+  line-height: 120%;
+}
+*/
+
+//色块
+span.mf_colorbox
+{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
+//贴片窗口
+.mf_clipWindow
+{
+  .border();
+  position: absolute;
+  min-height: 100px;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 2000;
+}
+
+/*
+ * 屏幕宽度的CSS，不处理手机版本的，手机版本由单独的CSS负责
+*/
+.screen-width(@min: 700px, @max: 1000px){
+  width: 100%;
+  max-width: @max;
+  min-width: @min;
+  //如果宽度小于阈值时，宽度为99%;要保持两边有空位
+  @media only screen and (max-width: @max-width),
+  only screen and (max-device-width: @max-width) {
+    width: 99%;
+  }
+}
+
+#abs{
+  height: 1px;
+  width: 100%;
+  z-index: 2001;
+  position: absolute;
+}
+
+//===============列表
+.mf_listview{
+  &.edit{
+    button{
+      visibility: visible;
+      background-position: 0 -150px;
+      margin-right: 0;
+    }
+  }
+
+  a{
+    text-align: left;
+    float: none;
+    display: block;
+    padding: 5px 0;
+    border-bottom: 1px solid transparent;
+    width: 90%;
+
+    &.selected{
+      button{
+        visibility: visible;
+      }
+      color: #AC038A;
+    }
+
+    button{
+      .main-image-css(-25px, -150px);
+      width: 25px;
+      height: 25px;
+      float:right;
+      margin-right: 20px;
+      visibility: hidden;
+    }
+  }
+
+  &.image span{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid @border-color;
+    margin-right: 10px;
+  }
+
+}
+
+.mf_listview.large{
+  >a{
+    padding: 15px 0;
+    font-size: 1.6em;
+    border-bottom: 5px solid transparent;
+  }
+}
+
+//水平的列表
+.mf_listview.horizontal{
+  background-color: #C8C8C8;
+  //.linear-gradient(#FCFCFC, #C8C8C8);
+  color: #FFF;
+  width: 200px;
+  //.border-radius(0);
+  color: #7f7f7f;
+  .display-box();
+
+  a{
+    .box-flex();
+    text-align: center;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    border-right: 1px #E4E4E4 solid;
+
+    &.selected{
+      .linear-gradient(#70a8fb, #367ff8);
+      background: -webkit-gradient(linear, 0% 51%, 0% 50%, from(#70a8fb), to(#367ff8));
+      color: #FFF;
+    }
+
+    &:last-child{
+      border-right: none;
+    }
+  }
+
+  label{
+    width: 100%;
+    margin-top: 0;
+  }
+
+  button, span{
+    display: none;
+  }
+  //background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(rgb(200,200,200)), to(rgb(252,252,252)));
+}

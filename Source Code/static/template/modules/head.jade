@@ -1,0 +1,93 @@
+//-
+  head
+    title #{lang._.title}
+    meta(charset='utf-8')
+    link(href='#{static}css/main.css', rel='stylesheet', type='text/css')
+    link(rel='icon', href='#{static}images/favicon.png', type='image/x-icon')
+//-获取主CSS的文件名
+-var _cssFile = "main";
+//- 移动设备上只有两个文件，一个是pad，另一个是phone，所以可以直接判断module
+-if(isMobile && isPhone) _cssFile = "phone";
+-if(isMobile && !isPhone) _cssFile = "pad";
+head
+  title
+    if(clientType == e.Client.WebSite || (isMobile && !inImbox))
+      |   #{lang._.title}
+    else
+      |   Busy
+  meta(charset='utf-8')
+  //- 移动设备
+  //-if isMobile
+  //- 用于iOS上，禁止生动转换数字为电话号码
+  meta(name='format-detection',content='telephone=no')
+  meta(content='email=no', name='format-detection')
+  //- 禁止放大
+  meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;', name='viewport')
+
+  //- 移动设备版本，并且不在imbox内，提醒smart app Banners，仅对ios6有效。
+  if isMobile && !inImbox && production
+    link(rel='apple-touch-icon', sizes='114x114', href='#{static}images/icons/ios_114.png')
+    link(rel='apple-touch-icon', sizes='57x57', href='#{static}images/icons/ios_57.png')
+    meta(name='apple-itunes-app',content='app-id=549457823')
+
+  //- 非网站情况，将所有页面的target都设置为在新窗口打开
+  if clientType !=  e.Client.WebSite && !isMobile
+    base(target='_blank');
+
+  //- 移动设备加载自己的css样式
+  if production
+    link(href='#{static}css/#{_cssFile}.css', rel='stylesheet', type='text/css')
+  else
+      link(href='#{static}css/main.css?client=#{clientType}', rel='stylesheet', type='text/css')
+  //-网站非主模块，加载extend.css
+  if(clientType == e.Client.WebSite && module != 'index')
+     link(href='#{static}css/extend.css', rel='stylesheet', type='text/css')
+  //- 只有AIR环境才加载
+  if clientType == e.Client.Air
+    script(src='javascript/AIRAliases.js')
+    //- 只有在背景模块才需要加载ApplicationUpdater_UI
+    if module == 'background'
+        script(src='images/desktop/ApplicationUpdater_UI.swf', type='application/x-shockwave-flash')
+
+  script(src='#{static}javascript/prototype.js')
+
+  //- 英文生产环境的网站，从google加载jquery，国内从主站加载jquery，因为jquery经常被墙
+  if production && !inImbox && !isDesktop
+    script(src='#{static}javascript/jQuery.js')
+    //-
+      //-国内从新浪加载
+      if(language == 'zh-cn')
+        //-script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js')
+        script(src='http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js')
+      else
+        //- 英文从微软加载，主要考虑用英文的也可能是国内用户或者在国内
+        script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js')
+        //-script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js')
+  else
+    script(src='#{static}javascript/jQuery.js')
+
+  if production
+    if inImbox
+      script(src='#{static}javascript/main.js');
+    else
+      script(src='#{static}javascript/#{_cssFile}.js')
+  else
+    //- 产品环境，在js后面加上客户端类型
+    script(src='#{static}javascript/main.js?client=#{clientType}')
+
+  //- PC网站和移动网站指定语言
+  //- if (clientType == e.Client.WebSite || (isMobile && !inImbox))
+  if (clientType == e.Client.WebSite)
+    //- 根据语言加载不同的js
+    script(src='#{static}javascript/i18n/#{language}.js')
+    //- 只有网页客户端才加载图标，Chrome扩展要加载不？
+    link(rel='shortcut icon', href='#{static}images/icons/favicon.ico', type='image/x-icon')
+    link(rel='icon', href='#{static}images/icons/16.png', type='image/png')
+
+  //-手机版本，imbox版本，desktop，需要加载i18n
+  if(isMobile || inImbox || isDesktop)
+    script(src='#{static}javascript/i18n.js')
+  //-imbox和desktop，加载storage
+  if(inImbox || isDesktop)
+    //- 将语言全部加载，本地不用考虑速度
+    script(src='#{static}javascript/storage.js')

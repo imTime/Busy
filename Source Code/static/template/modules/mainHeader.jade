@@ -1,0 +1,44 @@
+//-
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 11/2/12
+   Time: 8:50 下午
+   用于主模块的header部分
+header.mf_frame
+  //- 显示Logo
+  .logo
+    span.imgMain
+    h1
+      //- 手机网站/pad网站/pc网站，显示imtime，其它显示Busy
+      if(clientType == e.Client.WebSite || (isMobile && !inImbox))
+        | i'm Time
+      else
+        | Busy
+      label Beta
+
+  //- 工具栏及菜单
+  #toolbar
+    .menu
+      a.create
+        span
+        label #{lang.menu.create}
+      //-旧面版本和imbox内的Pad版本，需要添加option以及sync
+      if (isDesktop || (isPad && inImbox))
+        a.sync
+          span
+          label #{lang.menu.sync}
+        a.option
+          span
+          label #{lang.menu.option}
+      else
+        //- 普通版本显示下载和会员
+        a.download(href="/download.html")
+          span
+          label #{lang.menu.get}
+        a.member
+          span
+          label #{lang.menu.signIn}
+
+    .search
+      input#txtSearch
+      span.icon.imgMain

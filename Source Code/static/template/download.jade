@@ -1,0 +1,59 @@
+//-
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 11/17/12
+   Time: 9:44 下午
+   用于下载页面
+
+!!! 5
+html
+  include modules/head
+  body(lang='#{language}')
+    include modules/header
+    section.content.mf_frame
+      //- 菜单
+        aside
+          nav
+            li Browser
+
+            li PC
+            li Mobile Device
+            li The third platform
+      section.mainForm
+      -var host = '/download/';
+        ul#pnlDownload
+          li.safari
+            span.icon
+            h3
+              a(href='#{host}busy.safariextz') Busy on Safari
+            p.memo
+          li.chrome
+            span.icon
+            h3
+              a(href='#{host}busy.crx') Busy on Chrome
+            p.memo
+          li.windows
+            span.icon
+            h3
+               a(href='#{host}busy.air') Busy on Windows
+            p.memo
+              | You needs to install
+              a(href='http://get.adobe.com/air/', target="_blank") Adobe AIR
+              | first.
+          li.mac
+            span.icon
+            h3
+              a(href='#{host}busy.air') Busy on Max OS
+            p.memo
+              | You needs to install
+              a(href='http://get.adobe.com/air/', target="_blank") Adobe AIR
+              | first.
+          li.linux
+            span.icon
+            h3
+              a(href='#{host}busy.air') Busy on Linux
+            p.memo
+              | You needs to install
+              a(href='http://get.adobe.com/air/', target="_blank") Adobe AIR
+              | first.
+    include modules/footer

@@ -1,0 +1,374 @@
+//编辑器的CSS样式
+#pnlActivityEditor
+{
+  //display: block;
+  position: relative;
+  header{
+    clear: both;
+    overflow: hidden;
+  }
+
+  .innerModule
+  {
+    display: none;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .firstPanel{
+    .mf_bubble{
+      margin: 80px 40px 0 0;
+      line-height: 150%;
+      font-size: 1.2em;
+    }
+
+    .mf_bubble:after{
+      top: 20px;
+    }
+  }
+
+  header{
+    text-align: left;
+    .tabs{
+      width: 300px;
+      float: left;
+    }
+  }
+
+  label.caption{
+    width: 30%;
+    min-width: 150px;
+    padding-top: 5px;
+  }
+
+  ul.mf_editor{
+    >li{
+      padding: 20px 0;
+    }
+
+    //生日编辑
+    &.birthday{
+      input{
+        width: 300px;
+      }
+
+      >li.title{
+        padding-top: 40px;
+      }
+    }
+  }
+
+  textarea{
+    width: 60%;
+    font-size: 1.2em;
+    min-width: 400px;
+    height: 80px;
+  }
+
+  //选择框
+  .checkbox{
+    padding-top: 5px;
+    margin-left: 5px;
+    display: inline-block;
+  }
+
+  //时间
+  input.time{
+    width: 60px;
+    margin: 0 10px;
+  }
+
+  input.date{
+    width: 35%;
+    min-width: 200px;
+  }
+
+/*
+  div.statusBox
+  {
+    margin-left: 15px;
+    margin-top: -30px;
+    cursor: pointer;
+  }
+*/
+
+  footer{
+    text-align: right;
+    overflow: hidden;
+  }
+
+
+  a.link{
+    padding-top: 5px;
+    font-size: 1.4em;
+  }
+
+  div.calendar{
+    text-align: right;
+    float: right;
+    padding: 10px 0 0 0;
+  }
+}
+
+div#pnlActivityTabs{
+  width: 100%;
+  a{
+    width: auto;
+    min-width: 90px;
+  }
+}
+/*
+ * 针对普通编辑器
+*/
+#pnlNormalEditor{
+  //因为li的padding减少，所以这里要加上一个10，切换的时候不会跳跃
+  margin-top: 10px;
+  &.mf_editor.normal > li{
+    padding: 10px 0;
+  }
+}
+
+#pnlRepeatStop{
+  width: 50%;
+  li{
+    padding: 15px 0;
+    min-height: 40px;
+    label.caption{
+      min-width: 100px;
+    }
+
+    input{
+      //width:
+    }
+  }
+}
+
+#pnlRepeat{
+  >.spliter{
+    width: 10%;
+  }
+}
+
+.mf_subfield
+{
+  >*{
+    float: left;
+    display: block;
+    width: 40%;
+  }
+
+  .spliter{
+    width: 20%;
+    min-height: 100px;
+    position: relative;
+    //圆形按钮
+    button.round{
+      position: absolute;
+      top: 20px;
+      left: -20px;
+      .border-radius(10px);
+      background-color: #FFF;
+
+      &.add{
+        background-position: -250px -50px;
+      }
+
+      &.edit{
+        background-position: 0 -50px;
+      }
+    }
+
+    div{
+      border-right: 1px solid @border-color;
+      width: 1px;
+      height: 200px;
+      margin-top: 30px;
+    }
+  }
+}
+
+//===========================提醒=============
+#pnlReminderEditor{
+  >li{
+    display: block;
+    min-height: 30px;
+    padding: 15px 0;
+    text-align: right;
+  }
+
+  .mf_listview.horizontal{
+    width: 100%;
+  }
+}
+
+#lstReminders{
+  min-width: 200px;
+  overflow: hidden;
+  min-height: 10px;
+
+  a{
+    font-size: 1.6em;
+    padding: 20px 0;
+
+    &.selected{
+      color: inherit;
+    }
+
+    &.past{
+      text-decoration: line-through;
+      color: #CCC;
+      text-decoration-color: red;
+      font-style: italic;
+    }
+  }
+}
+
+#pnlReminders{
+  .spliter{
+    width: 10%;
+  }
+
+  .firstPanel, .lastPanel{
+    width: 45%;
+  }
+}
+
+#txtReminderValue
+{
+  width: 93%;
+}
+
+/*
+#lnkActCalendar span
+{
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 5px;
+}
+*/
+/*
+#pnlReminders
+{
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 1);
+  height: 100%;
+  width: 100%;
+  .border-radius(@radius);
+
+  button.close{
+    position: relative;
+    float: right;
+    margin: 10px 10px 0;
+    width: 30px;
+    height: 30px;
+    background: @main-image no-repeat -120px -120px;
+  }
+
+  h3{
+    font-size: 2em;
+    padding: 10px 0;
+    border-bottom: 5px solid #F90;
+    width: 240px;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .details{
+    span{
+      display: inline-block;
+      margin: 10px 10px 0 10px;
+      font-weight: bold;
+      width: 90px;
+
+      &.value{
+        width: 170px;
+      }
+    }
+
+    button{
+      font-size: 2.5em;
+      width: 20px;
+      height: 20px;
+      margin: 8px 0 8px 25px;
+      background: @main-image no-repeat -60px -120px;
+    }
+
+    li{
+      border-bottom: 1px solid #CCC;
+      padding: 0 10px;
+
+      &.active{
+        border-color: #F90;
+      }
+    }
+  }
+
+  .editor{
+    margin: 10px 0 0 15px;
+
+    button{
+      float: left;
+      background-position:  -540px 0;
+    }
+
+    &.edit{
+      background-position: -480px 0;
+    }
+  }
+}
+
+
+
+/*
+#pnlRepeatStop, #pnlRepeatStop>*
+{
+  display: inline-block;
+}
+
+#pnlRepeatStop
+{
+  margin-right: 10px;
+  float: right;
+  display: none;
+}
+
+#pnlRepeatStop .checkbox
+{
+  margin-top: 6px;
+}
+
+*
+
+#pnlStatus footer>section, #pnlStatus section.content>*
+{
+  float: left;
+  width: 490px;
+  padding: 5px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+#pnlStatus footer>section
+{
+  padding: 0 0 0 10px;
+}
+
+#pnlStatus footer .editor
+{
+  text-align: left;
+}
+
+#pnlStatus footer
+{
+  overflow: hidden;
+  height: 50px;
+  width: 1000px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0;
+}
+*/

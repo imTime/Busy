@@ -1,0 +1,31 @@
+//-
+  快速编辑器
+
+secion#pnlExpressEditor
+  header
+    span #{lang.expressEditor.title}
+    a#lnkQECalendars.mf_iconLink
+  div.content
+    textarea#txtQuick(placeholder='#{lang.expressEditor.mask}')
+  footer
+    .controls
+      button(flag='type') #
+      button(flag='at') @
+      button(flag='reminder') !
+      button(flag='repeat') ^
+    .buttons
+      div#chkMultiLine.checkbox
+      button.normal#btnSlideExpressEditor
+        span.icon.imgMain
+      button.normal.highlight#btnSaveExpressEditor #{lang.expressEditor.save}
+
+
+  //-
+    p.mf_hide.tips
+      span.icon
+      span 小技巧：在开头部分输入=可以开启多行模式
+
+  ul#pnlIRMonitor.mf_hide
+//-
+  section.mf_hide.learning
+    h3 How dose work?

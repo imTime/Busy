@@ -1,0 +1,5 @@
+content   busy_for_imtime                 chrome/content/
+skin      busy_for_imtime   classic/1.0   chrome/skin/
+locale    busy_for_imtime   en-US         chrome/locale/en-US/
+overlay	chrome://browser/content/browser.xul	chrome://busy_for_imtime/content/ff-overlay.xul
+style	chrome://global/content/customizeToolbar.xul	chrome://busy_for_imtime/skin/overlay.css

@@ -1,0 +1,209 @@
+/*
+ * 应用于桌面版本的css样式，包括AIR/Safari/Chrome/Firefox，但不包括网站，也不包括Pad
+*/
+
+@import "modules/main";
+@import "modules/browser";
+@import "modules/option";
+
+input, textarea{
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  -moz-user-select: text;
+}
+
+body.notification{
+  margin:0 5px;
+
+  .content > *{
+    float: left;
+    display: block;
+    overflow: hidden;
+  }
+
+  .content .icon{
+    width: 50px;
+    padding: 10px 10px 0 5px;
+    height: 50px;
+  }
+
+  h3.title{
+    font-size: 16px;
+    text-align: left;
+    line-height: 150%;
+    word-break: break-all;
+    margin: 5px 0;
+  }
+
+  #notification{
+    width: 220px;
+    min-height: 40px;
+
+    label{
+      font-weight: bold;
+      display: inline-block;
+      width: 50px;
+    }
+
+    li{
+      padding: 5px 0;
+      overflow: hidden;
+    }
+
+    .when span{
+            color: #F90;
+          }
+  }
+}
+
+.footer{
+  text-align: right;
+  padding-right: 10px;
+}
+
+@pop-width: 280px;
+body.popup{
+  overflow-x: hidden;
+  width: @pop-width;
+  padding: 10px;
+  background: white;
+
+  #btnNewActivity{
+    display: none;
+  }
+
+  .mainForm{
+    margin: 0px 0 10px 0;
+  }
+
+  #pnlMonth{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    top: 110px;
+    width: @pop-width;
+  }
+
+  #pnlTabs{
+    width: 100%;
+    margin:100px 0 10px 0;
+    text-align: left;
+    font-size: 0.8em;
+
+    button{
+      min-width: 50px;
+      padding: 5px;
+      min-height: 0;
+      background-color: #000000;
+      color: #FFF;
+    }
+  }
+
+  >div.helper{
+    display: block;
+    height: 0;
+    input{
+      border: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .timeline{
+    margin-top: 0;
+    width: @pop-width;
+
+    ul.date{
+      margin-top: 10px;
+    }
+
+    .everyDay{
+      display: none;
+    }
+
+    .activities{
+      width: @pop-width;
+      border-width: 0;
+
+      a button{
+        display: none;
+      }
+
+      >ul>a:hover button{
+        display: none;
+      }
+    }
+  }
+
+  #pnlExpressEditor{
+    width: @pop-width;
+    top: 0;
+    header{
+      font-size: 1.4em;
+      margin: 10px 0 10px 0;
+      text-align: left;
+    }
+
+    footer{
+      .controls{
+        display: none;
+      }
+      width: @pop-width;
+    }
+  }
+
+  >section{
+    overflow: auto;
+    min-height: 400px;
+  }
+
+  textarea#txtQuick{
+    width: @pop-width - 5;
+    font-size: 1.2em;
+    height: 60px;
+  }
+
+  #chkMultiLine{
+    display: none;
+  }
+
+  #pnlNoActivity{
+    width: @pop-width - 12;
+    text-align: left;
+    line-height: 200%;
+    padding: 10px 5px;
+    font-size: 1.2em;
+    margin-top: 25px;
+
+    label.caption{
+      margin: -25px 0 0 5px;
+      height: 20px;
+      width: auto;
+      min-width: 100px;
+      min-height: 20px;
+    }
+  }
+}
+
+ul#pnlIRMonitor{
+  font-size: 0.9em;
+  >li>div{
+    float: none;
+    display: block;
+    width: 100% !important;
+    padding: 10px 0;
+
+    label{
+      display: block;
+      width: 80px;
+      float: left;
+      font-weight: bold;
+    }
+/*
+    span, div{
+      display: block;
+      float: left;
+    }
+*/
+  }
+}

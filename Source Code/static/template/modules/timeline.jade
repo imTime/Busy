@@ -1,0 +1,18 @@
+section.content
+  //- 桌面版/网站才加载快速编辑
+  if (isDesktop || clientType == e.Client.WebSite)
+    include expressEditor
+
+  //- popup模块加入导航页
+  if(isDesktop && module == "popup")
+    #pnlTabs.tabs
+      button(flag='go')#btnGo.normal #{lang.popup.go}
+      button(flag='more')#btnMore.normal #{lang.popup.more}
+  //- 显示活动列表
+  section.mainForm
+    section.timeline#timeline
+    #pnlNoActivity
+      label.caption Today
+      p
+        | #{lang.noActivity}
+      button#btnNewActivity #{lang.newActivity}

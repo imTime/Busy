@@ -1,0 +1,39 @@
+//-
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 11/4/12
+   Time: 8:12 下午
+   TODO编辑器，兼容手机
+
+ul#pnlTodoEditor.mf_editor.todo.mf_tableview
+  li.title.input(data-row='todoEditor.title', data-type='input')
+    label.caption #{lang.actEditor.title}
+    if (isPhone)
+      input#txtTodoTitle(type='text', autocomplete='off')
+    else
+      textarea#txtTodoTitle
+  if(isPhone)
+    li.calendar(data-row='todoEditor.calendar')
+      label.caption  #{lang.todoEditor.calendar}
+      #textTodoCalendar.content.mf_iconLink
+  li.begin(data-row='todoEditor.begin')
+    label.caption #{lang.actEditor.begin}
+    input(type='text', autocomplete='off').date#txtTodoDate
+    //- 如果不是手机版，则在加入时间
+    if (!isPhone)
+      input(type='text', autocomplete='off').time#txtTodoTime
+      div#chkTodoAllDay.checkbox
+  //-手机版要加上全天事件和时间（直接从日期slideup中走）
+    if (isPhone)
+      //-是否全天事件
+      li.allDay(data-row='todoEditor.allDay', data-type='checkbox')
+        label.caption #{lang.actEditor.allDay}
+        div#chkTodoAllDay.checkbox
+      //-时间，默认隐藏
+      li#rowTodoTime.time.mf_hide(data-row='todoEditor.time')
+        label.caption #{lang.actEditor.time}
+        input(type='text', autocomplete='off').time#txtTodoTime
+
+  li.reminders(data-row='todoEditor.reminders')
+    label.caption #{lang.actEditor.reminders}
+    a#lnkTodoReminder.link

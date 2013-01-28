@@ -1,0 +1,29 @@
+{
+  "name": "Busy",
+  "description": "Cross-platform schedule tool",
+  "launch_path": "/",
+  "icons": {
+    "16": "/images/icons/16.png",
+    "30": "/images/icons/30.png",
+    "48": "/images/icons/48.png",
+    "60": "/images/icons/60.png",
+    "128": "/images/icons/128.png"
+    "256": "/images/icons/256.png"
+  },
+  "installs_allowed_from": ["*"],
+  "orientation": "portrait",
+  "developer": {
+    "name": "imTime.com",
+    "url": "http://imtime.com"
+  },
+  "default_locale": "en",
+  "permissions": {
+    "contacts": {
+      "description": "Required for autocompletion in the share screen",
+      "access": "readcreate"
+    },
+    "alarm": {
+      "description": "Required to schedule notifications"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+//-
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 11/4/12
+   Time: 8:27 下午
+   标准活动编辑器
+
+ul#pnlNormalEditor.mf_editor.normal.mf_tableview
+  li.title.input(data-row='normalAct.title')
+    label.caption #{lang.actEditor.title}
+    if (isPhone)
+      input#txtActTitle(type='text', autocomplete='off')
+    else
+      textarea#txtActTitle
+  if(isPhone)
+    li.calendar(data-row='normalAct.calendar')
+      label.caption #{lang.actEditor.calendar}
+      #textNormalCalendar.content.mf_iconLink
+  li.begin(data-row='normalAct.begin')
+    label.caption #{lang.actEditor.begin}
+    input#txtBegin.date(type='text', autocomplete='off')
+    //- 非手机版本
+    if (!isPhone)
+      input#txtBeginTime.time(type='text', autocomplete='off')
+      div#chkAllDay.checkbox
+      div#chkEnd.checkbox
+  li.end#rowActEnd(data-row='normalAct.end')
+    label.caption #{lang.actEditor.end}
+    input#txtEnd.date(type='text')
+    //- 非手机版本在在后面加上结束时间
+    if (!isPhone)
+      input#txtEndTime.time(type='text', autocomplete='off')
+  li.repeat(data-row='normalAct.repeat')
+    label.caption #{lang.actEditor.repeat}
+    a#lnkRepeat.link
+  li.reminders(data-row='normalAct.reminders')
+    label.caption #{lang.actEditor.reminders}
+    a#lnkReminder.link

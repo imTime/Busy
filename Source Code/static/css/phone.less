@@ -1,0 +1,567 @@
+/*
+  用于智能机上的CSS，适用于7寸以下，3寸以上的屏
+  只考虑支持HTML3和CSS3的设备，但要考虑IE下对某些CSS属性不支持的情况
+*/
+@import "modules/core";
+@import "modules/timeline";
+@import "modules/datepicker";
+
+@header-height: 44px;
+@color-line-height: 1px;
+@header-margin: 4px;
+//默认屏幕宽度和高度，暂时默认为iPhone4的高度，不是这个宽度，由JS调整
+@default-width: 320px;
+@default-height: 480px;
+@ios-image: url(../images/phone/ios.png);
+@retina-ios-image: url(../images/phone/ios@2x.png);
+@table-border-color: #ababab;
+body, .mf_slideup{
+  background: url(../images/phone/background.jpg) no-repeat;
+  background-size: 320px 568px;
+}
+
+#abs{
+  width: 0;
+  padding: 0;
+  margin:0;
+}
+
+.ios-image-css(@x, @y){
+  .background-image(@ios-image, @retina-ios-image, 400px, 200px, @x, @y);
+}
+
+.tile{
+  width: @default-width;
+  float: left;
+}
+
+#msgbox{
+  z-index: 9999;
+  width: 100%;
+  min-width: @default-width;
+  max-height: 200px;
+  max-height: 500px;
+  position: absolute;
+  border-bottom: 5px solid #666;
+  .border-radius(2px);
+
+  .text{
+    margin: 8px;
+    font-size: 1.4em;
+  }
+}
+
+input[disabled]{
+  background-color: inherit;
+  text-decoration: line-through;
+}
+
+.mf_datepicker{
+  .white-transparent();
+}
+
+//模拟iphone的tableview
+.mf_tableview{
+  .white-transparent(0.8);
+  margin: 0 6px;
+
+  .border-radius(6px);
+  border: 1px solid @table-border-color;
+
+  .checkbox{
+    float: right;
+    margin-right: 20px;
+    margin-top: 8px;
+    label{
+      display: none;
+    }
+  }
+
+  &.right{
+    label.caption{
+      text-align: right;
+      display: block;
+      margin-right: 20px;
+    }
+  }
+
+  >li{
+    border-bottom: 1px solid @table-border-color;
+    padding: 4px;
+    min-height:32px;
+    overflow: hidden;
+    background:url(../images/right-arrow.png) no-repeat 97% center;
+    -webkit-background-size: 10px 14px;
+    background-size: 10px 14px;
+
+    //最后的行不要下面的线
+    &:last-child{
+      border-bottom: none;
+    }
+
+    &.accessoryNone{
+      background: none;
+
+      input{
+        margin-right: 10px;
+      }
+    }
+
+    label.caption{
+      display: inline-block;
+      width: auto;
+      padding: 8px 0 0 5px;
+      font-size: 17px;
+    }
+
+    input, textarea{
+      border: 0;
+      width: 60%;
+      background-color: transparent;
+    }
+
+    a.link, input{
+      float: right;
+      font-size: 17px;
+      color: #666;
+      text-align: right;
+      margin-right: 25px;
+    }
+
+    div.content{
+      display: block;
+      float: right;
+      font-size: 1.3em;
+      margin-right: 25px;
+      margin-top: 8px;
+      text-align: right;
+      width: 60%;
+    }
+
+    a.link{
+      color: inherit;
+      margin-top: 8px;
+      text-decoration: none;
+      width: 50%;
+
+      &:hover{
+        color: inherit;
+      }
+    }
+  }
+}
+
+//slideup
+.mf_slideup{
+  position: absolute;
+  width: @default-width;
+  background-color: rgba(255, 255, 255, 1);
+  height: @default-height;
+  top: -@default-height;
+  overflow: hidden;
+
+  >.content{
+    padding-top: 10px;
+  }
+}
+
+.mf_colorLine div{
+  height: @color-line-height;
+}
+
+header.main{
+  overflow: hidden;
+  .ios-image-css(0, 0);
+  //.imgiOS;
+  .nav{
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+    >*{
+      float: left;
+    }
+
+    .caption{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 30px;
+      padding-top: 12px;
+      text-align: center;
+      color: #FFF;
+      font-family:"Helvetica Neue";
+      font-weight: bold;
+      font-size: 18px;
+      width: @default-width - 120;
+    }
+
+    button{
+      margin: @header-margin;
+      min-width: 50px;
+      height: @header-height - @header-margin * 2 - @color-line-height;
+      .linear-gradient(#464646, #383838);
+      background: -webkit-gradient(linear, 0% 51%, 0% 50%, from(#464646), to(#383838));
+      color: #FFF;
+      .border-radius(6px);
+      padding-top: 0;
+      text-align: center;
+    }
+
+    button.right{
+      float: right;
+    }
+  }
+}
+
+#pnlFrame, .mf_phonePage{
+  width: @default-width;
+  height: @default-height;
+  overflow: hidden;
+}
+
+#pnlContent{
+  >header{
+    >section{
+      .tile;
+      overflow: hidden;
+      height: @header-height;
+    }
+  }
+}
+
+.mf_phonePage{
+  float: left;
+}
+
+//编辑器
+#pnlActivityEditor{
+  .mf_editor{
+    display: none;
+    margin-top: 0;
+
+    >li{
+      padding: 10px 0;
+    }
+  }
+}
+
+div#pnlActivityTabs{
+  margin-top: 10px;
+  .white-transparent();
+  border: none;
+  width: 96%;
+  .border-radius(0);
+}
+
+#pnlCalendarEditor{
+  footer{
+    display: none;
+  }
+}
+
+#lstCalendarRibbon
+{
+  width: 75%;
+  padding: 10px 0 0 0px;
+  float: right;
+  overflow: hidden;
+}
+
+//手机版本上不显示忘记密码
+#lnkForgotPwd{
+  display: none !important;
+}
+
+#pnlSign{
+  display: none;
+  top: 0;
+  >ul{
+    display: none;
+    margin-top: 5px;
+  }
+
+  li{
+    padding: 2px 0;
+  }
+
+  label.caption{
+    display: none;
+  }
+
+  input{
+    width: 85%;
+    border: 0;
+    text-align: left;
+    float: left;
+    height: 25px;
+    margin-left: 10px;
+  }
+
+  .memo{
+    display: none;
+  }
+
+  footer{
+    .white-transparent(0.8);
+    .border-radius();
+    border: 1px solid @table-border-color;
+    overflow: hidden;
+    padding: 10px 5px;
+    margin: 8px;
+    text-align: left;
+    div.link{
+      margin-left: 5px;
+      //margin: 10px 0;
+    }
+  }
+
+  .button{
+    float: right;
+    padding-right: 5px;
+  }
+}
+
+//列表
+.mf_listview{
+  .border-radius(6px);
+  .white-transparent();
+  border: 1px solid #CCC;
+  margin: 6px;
+  overflow: hidden;
+
+  &.edit{
+    button{
+      //.imgiOS;
+      .ios-image-css(0, -50px);
+      //background-position: 0 -50px;
+      width: 29px;
+      height: 29px;
+    }
+  }
+
+  a.selected{
+    button{
+      visibility: visible;
+    }
+  }
+
+  >a, &.large>a{
+    padding: 10px 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #CCC;
+    width: auto;
+    overflow: hidden;
+
+    label{
+      max-width: 90%;
+      display: inline-block;
+    }
+
+    *{
+      display: block;
+      float: left;
+    }
+
+    button{
+      float: right;
+      margin-right: 0;
+      padding: 0;
+    }
+
+    label{
+      margin-top: 5px;
+    }
+
+    &:hover{
+      color: inherit;
+      border-bottom-color: inherit;
+    }
+
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+}
+
+#pnlReminderEditor{
+  margin-top: 10px;
+  /*
+  label.caption{
+    text-align: right;
+    width: auto;
+    padding-right: 20px;
+    display: block;
+  }
+  */
+
+  .mf_listview.horizontal{
+    width: 95%;
+  }
+}
+
+#tipsNoReminders{
+  .white-transparent();
+  margin: 50px 10px 0 10px;
+  font-size: 1.2em;
+  padding: 20px 0;
+
+  &:after{
+    left: 90%;
+  }
+}
+
+#pnlRepeatStop{
+  margin-top: 20px;
+}
+
+.timeline{
+  display: none;
+  padding: 10px;
+  font-size: 0.8em;
+  .white-transparent();
+  margin: 10px 5px 0 5px;
+  .border-radius();
+
+  ul.date{
+    >li{
+      display: block;
+      float: none;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .activities{
+      .mf_checkbox span{
+        margin-right: 20px;
+      }
+
+      border: none;
+      >ul>a{
+        border-bottom: 1px solid #CCC;
+        padding: 15px 0;
+        &:hover button{
+          visibility: hidden;
+        }
+      }
+    }
+
+    .everyDay{
+      .line1{
+        color: #F90;
+      }
+
+      >div{
+        width: auto;
+        float: left;
+        margin-right: 10px;
+        border: none;
+        font-size: 1.4em;
+
+        &.week{
+          font-size: 1em;
+          color: #CCC;
+        }
+      }
+      div.date{
+
+      }
+    }
+  }
+}
+
+//日期模块
+#pnlGo{
+  .white-transparent();
+  width: 320px;
+  display: none;
+  position: absolute;
+  top: 44px;
+  overflow: hidden;
+
+  @media only screen and (min-width: 600px),
+  only screen and (min-device-width: 600px) {
+    max-width: 320px;
+  }
+}
+
+#pnlNoActivity{
+  border: none;
+  padding: 10px;
+  font-size: 1.2em;
+  text-align: left;
+  .mf_bubble;
+  border-width: 1px;
+  .white-transparent(0.9);
+  position: relative;
+  margin: 30px 10px 0 10px;
+
+  &:after{
+    left: 89%;
+    border-color: transparent transparent rgba(255, 255, 255, 0.9);
+  }
+
+  label.caption{
+    margin: 0;
+    padding: 0;
+    float: none;
+    background-color: transparent;
+    //color: #666;
+    border: none;
+    text-align: left;
+    position: static;
+
+  }
+
+  button{
+    display: none;
+  }
+}
+
+#pnlTimeView{
+  margin-top: 20px;
+  .slider{
+    width: 200px;
+    overflow: hidden;
+    padding: 0 10px;
+    float: right;
+  }
+
+}
+
+#sldDatepicker{
+  z-index: 9999;
+}
+
+#fullscreen{
+  .white-transparent(0.95);
+  z-index: 2000;
+  position: absolute;
+  display: none;
+}
+/*
+#pnlTimePicker{
+  padding-top: 10px;
+  position: absolute;
+  .white-transparent(0.95);
+  width: 100%;
+  min-height: 280px;
+  top: 44px;
+
+  li{
+    padding: 10px 20px;
+  }
+
+  .caption{
+    font-size: 1.6em;
+  }
+
+  li.text{
+    font-size: 3em;
+    text-align: center;
+    padding-top: 40px;
+  }
+
+
+}
+*/
+@import "modules/mobile";

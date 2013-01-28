@@ -1,0 +1,105 @@
+/*
+  popup页相关
+*/
+@pop-width: 270px;
+body.popup{
+  overflow-x: hidden;
+  width: @pop-width;
+  padding: 10px;
+  background: white;
+
+  >div.helper{
+    display: block;
+    height: 0;
+
+    input{
+      border: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .timeline{
+    margin-top: 0;
+    width: @pop-width;
+
+    ul.date{
+      margin-top: 10px;
+    }
+
+    .everyDay{
+      display: none;
+    }
+
+    .activities{
+      width: @pop-width;
+      border-width: 0;
+
+      >ul>a:hover button{
+        display: none;
+      }
+    }
+  }
+
+  #pnlExpressEditor{
+    width: @pop-width;
+    //隐藏标题的内容
+    >h3{
+      font-size: 1.2em;
+      margin: 0 0 10px 0;
+    }
+
+    footer{
+      width: @pop-width;
+    }
+  }
+
+  >section{
+    overflow: auto;
+    min-height: 400px;
+    >div.tab{
+      margin-top: 100px;
+      text-align: left;
+    }
+  }
+
+  textarea#txtQuick{
+    width: @pop-width - 10;
+    font-size: 1.2em;
+  }
+
+  #chkMultiLine{
+    display: none;
+  }
+
+  #pnlNoActivity{
+    width: @pop-width - 20;
+    margin-top: 40px;
+    text-align: left;
+    line-height: 200%;
+    padding: 10px 5px;
+    font-size: 1.6em;
+
+  }
+}
+
+ul#pnlIRMonitor{
+  >li>div{
+    float: none;
+    display: block;
+    width: 100% !important;
+    padding: 10px 0;
+
+    label{
+      display: block;
+      width: 100px;
+      float: left;
+      font-weight: bold;
+    }
+
+    span, div{
+      display: block;
+      float: left;
+    }
+  }
+}

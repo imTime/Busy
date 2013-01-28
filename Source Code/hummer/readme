@@ -1,0 +1,4 @@
+hummer是一个轻量级的框架，它包括支持服务器端Node.js的代码和支持客户端的代码
+extend: 对现有Javascript数据类型的扩展
+server: 针对服务器端的代码
+client: 针对客户端的代码，这个代码部署到的服务器

@@ -1,0 +1,52 @@
+//- 活动编辑器
+section#pnlActivityEditor.mf_modal
+  //- 状态颜色
+    .statusBox
+      .mask
+  include repeat
+  //- 提醒列表
+  #pnlReminders.innerModule.mf_subfield
+    //- 用户的提醒明细
+    .firstPanel
+      #lstReminders.mf_listview.edit
+      #tipsNoReminders.mf_bubble.right.mf_hide #{lang.actEditor.noReminders}
+    .spliter
+      div
+      button.round.imgMain.add#btnEditReminder
+    .lastPanel
+      include reminderEditor
+  header
+    .tabs
+      #pnlActivityTabs.mf_listview.horizontal
+    div.calendar
+      a#lnkActCalendar.mf_iconLink
+  include birthdayEditor
+  include todoEditor
+  include normalEditor
+
+  //-============================================================
+  //- 用户的状态列表
+  #pnlStatus.mf_hide
+    .inner
+      section.content
+        //- 编辑
+        #statusList
+          .details
+        //- 编辑
+        #statusEditor.editor
+          //- 要编辑的状态列表，可以点击直接编辑
+          #lsvEditStatus
+          .spliter
+            button#btnEditStatus
+            div
+          include statusEditor
+      //- 页脚部分
+      footer
+        section.statuses
+          button.round(flag='close')
+          button.round(flag='edit')
+        section.editor
+          button.round(flag='back')
+  //-按钮区
+  footer
+    button#btnSaveActivity.normal.highlight #{lang.actEditor.button.save}

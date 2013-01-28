@@ -1,0 +1,21 @@
+!!! 5
+html
+  include modules/head
+  body(lang='#{language}')
+    include modules/fullscreen
+    #abs
+      include modules/option
+      include modules/calendarEditor
+      include modules/activityEditor
+      //-msgbox
+      #msgbox
+        .text
+      //- 搜索的快速显示面板
+      #secSearch
+      //弹出日历选择项
+      div#pnlClipCalendars.mf_clipWindow.mf_hide.bubble.mf_listview.image
+    include modules/mainHeader
+    div.mf_frame#pnlFrame
+      include modules/timeline
+      include modules/side
+    include modules/footer

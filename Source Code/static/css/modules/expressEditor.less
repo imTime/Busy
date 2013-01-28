@@ -1,0 +1,121 @@
+//=============快速编辑器=================
+body[lang="zh-cn"] #pnlExpressEditor{
+  font-size: 0.9em;
+}
+
+#pnlExpressEditor
+{
+  width: 100%;
+  position: absolute;
+  background-color: #FFF;
+
+  textarea{
+    width: 99%;
+    font-size: 1.4em;
+    height: 80px;
+    float: right;
+    border-color: @border-color;
+  }
+
+  footer{
+    padding-top: 10px;
+    overflow: hidden;
+    display: none;
+    clear: both;
+
+    .controls{
+      display: inline-block;
+    }
+
+    div.buttons{
+      text-align: right;
+      float: right;
+      width: 255px;
+    }
+  }
+
+
+  > header a{
+    float: right;
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+
+  > header{
+    font-size: 1.6em;
+    margin-bottom: 15px;
+  }
+}
+
+#chkMultiLine{
+  margin: 10px 10px 0 0;
+  width: 120px;
+}
+
+#btnSlideExpressEditor{
+  width: 40px;
+  min-width: 0;
+  .border-radius(@button-radius 0 0 @button-radius);
+  .linear-gradient(rgba(198, 215, 5, 1), rgba(54, 142, 6, 1));
+  margin-right: 1px;
+
+  span{
+    background-position: -250px -150px;
+    height: 16px;
+  }
+}
+
+#btnSaveExpressEditor{
+  .border-radius(0 @button-radius @button-radius 0);
+}
+
+#pnlIRMonitor
+{
+  overflow: hidden;
+  min-height: 200px;
+
+  .content{
+    display: inline-block;
+    float: left;
+  }
+
+  > li{
+    padding: 10px 0;
+    border-bottom: 1px solid @border-color;
+    overflow: hidden;
+  }
+
+  > li > div{
+    overflow: hidden;
+    margin-right: 10px;
+    padding: 10px 0;
+    font-size: 1.3em;
+    display: block;
+    width: 100%;
+
+    label{
+      display: inline-block;
+      width: 100px;
+      float: left;
+      font-weight: bold;
+    }
+  }
+
+  div{
+
+    &.event{
+      >div{
+        color: #F90;
+      }
+    }
+
+    &.type>span{
+      color: green;
+    }
+  }
+
+  div span {
+    display: inline-block;
+  }
+}
+

@@ -1,0 +1,243 @@
+#pnlNoActivity
+{
+  //width: 99%;
+  font-size: 1.6em;
+  padding: 30px 0px;
+  line-height: 150%;
+  text-align: center;
+  border: 1px solid @border-color;
+  .border-radius(@radius);
+  margin: 150px 0 20px 0;
+
+  label.caption{
+    color: #F90;
+    text-align: center;
+    font-size: 1.2em;
+    width: auto;
+    margin: -50px 0 0 30px;
+    float: left;
+    background-color: #FFF;
+    padding: 5px 20px;
+    .border();
+    .border-radius();
+    min-width: 200px;
+    height: 28px;
+    left: 0;
+  }
+}
+
+#btnNewActivity
+{
+  border: 1px solid @border-color;
+  padding: 12px 50px;
+  font-size: 1.6em;
+  margin-top: 20px;
+  .linear-gradient(rgba(125, 201, 254, 1), rgba(7, 88, 150, 1));
+  color: #FFF;
+  .border-radius(15px);
+}
+
+#btnNewActivity:hover{
+  color: #333;
+}
+
+body[lang="zh-cn"] .timeline{
+  font-size: 0.9em;
+}
+
+.timeline
+{
+  //width: 99%;
+  text-align: left;
+
+  /*
+  div.statusBox{
+    margin-left: 15px;
+    margin-top: -30px;
+  }
+  */
+
+  ul.date{
+    width: 100%;
+    display: table;
+
+    >li{
+      display: table-cell;
+      padding: 0;
+      margin: 0;
+      vertical-align: middle;
+
+      .activity{
+        margin-top: 50px;
+      }
+    }
+  }
+
+  .everyDay{
+    width: 30%;
+  }
+
+  .everyDay div{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.6em;
+
+    &.line1{
+      border: 1px solid #F90;
+      border-width: 0 0 5px 0;
+    }
+
+    .week, .local, .prettyDate{
+      font-size: 0.8em;
+      margin-right: 8px;
+    }
+
+    .prettyDate, .local{
+      color: #CCC;
+      font-size: 0.7em;
+    }
+  }
+
+  .relation{
+    width: 20px;
+
+    div{
+      margin-top: 40px;
+      border-radius: 4px 0 0 4px;
+      width: 20px;
+      border: 1px solid @border-color;
+      border-width: 1px 0 1px 1px;
+    }
+  }
+
+  div.activity>ul{
+    width: 468px;
+    min-height: 5em;
+    border-radius: 6px;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid @border-color;
+  //box-shadow:  0px 0px 10px rgba(204, 204, 204, 0.5);
+  }
+
+  div.activity li{
+    line-height: 150%;
+    height: 2.5em;
+  }
+
+/*
+  li label{
+    color: #CCC;
+    margin: 0 0.3em 0 2em;
+    display: inline-block;
+  }
+*/
+  div.activity li.header{
+    height: 3em;
+    padding-top: 1.5em;
+  }
+
+  label.time, li.date span.content
+  {
+    color: #F90;
+  }
+
+  li label.head
+  {
+    width: 4em;
+    margin: 0;
+  }
+
+  h2
+  {
+    display: inline-block;
+  }
+
+  .activities>ul>li
+  {
+    padding: 10px 0;
+    overflow: hidden;
+  }
+
+  .activities a.finished
+  {
+    text-decoration: line-through;
+    color: #CCC;
+    font-style: italic;
+  }
+
+  .activities>ul>a
+  {
+    display: block;
+    padding: 10px;
+    overflow: hidden;
+    border-bottom: 1px solid transparent;
+  }
+
+  .activities>ul>a:hover
+  {
+    border-bottom-color: #666;
+  }
+
+  .activities>ul>a button
+  {
+    visibility: hidden;
+    float: right;
+    cursor: pointer;
+    width: 21px;
+    height: 21px;
+    margin-left: 10px;
+
+    &:hover{
+      color: #F90;
+      opacity: 0.5;
+    }
+
+    &.edit{
+      .main-image-css(-150px, -150px);
+      //background-position: -150px -150px;
+    }
+
+    &.delete{
+      .main-image-css(-175px, -150px);
+      //background-position: -175px -150px;
+    }
+  }
+
+  .activities>ul>a:hover button
+  {
+    visibility: visible;
+  }
+
+  .activities {
+    border: 1px solid @border-color;
+    padding: 10px;
+    overflow: hidden;
+    width: 70%;
+    .border-radius(@radius);
+
+    .time, .age{
+      color: #FFF;
+      margin-right: 5px;
+      background: #666;
+      padding: 2px 5px;
+    }
+
+    .title{
+      font-size: 1.2em;
+      word-break: break-all;
+      width: 60%;
+      overflow: hidden;
+    }
+  }
+
+  .activities .mf_checkbox span, .activities .mf_colorbox
+  {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+  }
+
+
+}

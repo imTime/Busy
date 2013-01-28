@@ -1,0 +1,51 @@
+//非主要功能页的css
+body > header{
+  padding: 10px 0;
+}
+
+#pnlDownload{
+  margin-top: 20px;
+  li{
+    text-align: center;
+    span.icon{
+      background: url(../images/download@2x.png) no-repeat;
+      width: 160px;
+      height: 160px;
+      display: inline-block;
+    }
+
+    h3{
+      font-size: 1.6em;
+      a{
+        color: #194e9e;
+      }
+    }
+
+    &.safari span.icon{
+      background-position: -160px 0;
+    }
+
+    &.windows span.icon{
+      background-position: -480px 0;
+    }
+
+    &.mac span.icon{
+      background-position: -320px 0;
+    }
+
+    &.linux span.icon{
+      background-position: -640px 0;
+    }
+
+    float: left;
+    width: 25%;
+    pading: 20px 0;
+    overflow: hidden;
+
+    &:hover{
+      background-color: #f0f0f0;
+    }
+  }
+  clear: both;
+  overflow: hidden;
+}

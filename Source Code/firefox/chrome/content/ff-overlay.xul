@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://busy_for_imtime/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://busy_for_imtime/locale/overlay.dtd">
+<overlay id="busy_for_imtime-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="ff-overlay.js"/>
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="busy_for_imtime-strings" src="chrome://busy_for_imtime/locale/overlay.properties"/>
+  </stringbundleset>
+  <toolbarpalette id="BrowserToolbarPalette">
+    <toolbarbutton id="busy_for_imtime-toolbar-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
+                   label="&busy_for_imtimeToolbarButton.label;" tooltiptext="&busy_for_imtimeToolbarButton.tooltip;"
+                   oncommand="busy_for_imtime.onToolbarButtonCommand()"/>
+  </toolbarpalette>
+  <popup id="contentAreaContextMenu">
+    <menuitem id="context-busy_for_imtime" label="&busy_for_imtimeContext.label;"
+              accesskey="&busy_for_imtimeContext.accesskey;"
+              insertafter="context-stop"
+              oncommand="busy_for_imtime.onMenuItemCommand(event)"/>
+  </popup>
+  <menupopup id="menu_ToolsPopup">
+    <menuitem id="busy_for_imtime-hello" label="&busy_for_imtime.label;"
+              oncommand="busy_for_imtime.onMenuItemCommand(event);"/>
+  </menupopup>
+  <menupopup id="viewSidebarMenu">
+    <menuitem observes="viewSidebar_busy_for_imtime"/>
+  </menupopup>
+  <broadcasterset id="mainBroadcasterSet">
+    <broadcaster id="viewSidebar_busy_for_imtime"
+                 label="&busy_for_imtimeSidebar.label;"
+                 autoCheck="false"
+                 type="checkbox"
+                 group="sidebar"
+                 sidebarurl="chrome://busy_for_imtime/content/ff-sidebar.xul"
+                 sidebartitle="&busy_for_imtimeSidebar.label;"
+                 oncommand="toggleSidebar('viewSidebar_busy_for_imtime');"/>
+  </broadcasterset>
+  <toolbox id="navigator-toolbox">
+    <toolbar class="chromeclass-toolbar" toolbarname="&busy_for_imtimeToolbar.name;" customizable="true" id="busy_for_imtime-toolbar">
+      <label value="&busy_for_imtimeToolbar.label;"/>
+    </toolbar>
+  </toolbox>
+</overlay>

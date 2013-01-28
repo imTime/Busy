@@ -1,0 +1,299 @@
+//=========================日历==============
+.mf_clipDatepicker
+{
+  position: absolute;
+  display: none;
+  z-index: 9999;
+  top: 10px;
+  left: 10px;
+  width: 280px;
+  background-color: #FFF;
+  .box-shadow(5px, #CCC);
+}
+
+.mf_datepicker table
+{
+  width: 100%;
+  border-collapse:collapse;
+}
+
+.mf_datepicker td
+{
+  text-align: center;
+  border: 1px solid @border-color;
+}
+
+.mf_datepicker td.active
+{
+  background-color: #dfdfdf;
+  color: #666;
+}
+
+.mfdp_header
+{
+  height: 40px;
+  border: 1px solid @border-color;
+  border-width: 1px 1px 0 1px;
+}
+
+.mf_datepicker .mfdp_header td
+{
+  border: 0;
+}
+
+.mfdp_previous, .mfdp_next
+{
+  width: 40px;
+  font-size: 1.6em;
+}
+
+.mfdp_previous span, .mfdp_next span
+{
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  .imgMain();
+}
+
+.mfdp_previous span
+{
+  background-position: -75px -150px;
+}
+
+.mfdp_next span
+{
+  background-position: -50px -150px;
+}
+
+.mfdp_today
+{
+  width: 50px;
+}
+
+
+.mfdp_date footer label
+{
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.mfdp_date footer input[type="text"]
+{
+  height: 22px;
+  width: 80px;
+}
+
+.mfdp_container
+{
+  display: none;
+}
+
+.mfdp_container table
+{
+  height: 256px;
+}
+
+.mfdp_container.mfdp_date table
+{
+  height: 220px;
+}
+
+//==============================日历上的时间相关================
+/*
+.mfdp_time
+{
+  width: 100%;
+  height: 258px;
+  background: #FFF;
+  overflow: hidden;
+  position: absolute;
+}
+
+.mfdp_time>div
+{
+  float: left;
+}
+
+.mfdp_time a
+{
+  display: block;
+  border: 1px solid transparent;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.4em;
+  float: left;
+}
+
+.mfdp_time a:hover
+{
+  background: #CCC;
+}
+
+.mfdp_time .selected
+{
+  background-color: #666;
+  color: #FFF;
+}
+
+.mfdp_minutes .selected
+{
+  background-color: #FFF;
+  color: #666;
+}
+
+.mfdp_ampm
+{
+  width: 50px;
+}
+
+.mfdp_ampm a
+{
+  width: 50px;
+  padding-top: 40px;
+  height: 68px;
+  font-size: 16px;
+}
+
+.mfdp_ampm a.close
+{
+  height: 30px;
+  font-weight: normal;
+  font-size: 1em;
+  margin: 10px 0 10px 10px;
+  padding: 0;
+  background: @main-image no-repeat -120px -120px;
+}
+
+
+.mfdp_hours
+{
+  width: 106px;
+}
+
+.mfdp_minutes a
+{
+  width: 60px;
+  padding-top: 11px;
+  height: 30px;
+}
+
+.mfdp_minutes
+{
+  background: #666;
+  color: #FFF;
+  width: 124px;
+}
+
+.mfdp_hours a
+{
+  float: left;
+  width: 51px;
+  font-size: 14px;
+  padding-top: 11px;
+  height: 30px;
+}
+
+.mfdp_date footer
+{
+  padding: 5px;
+  border: 1px solid @border-color;
+  border-top-width: 0;
+  text-align: left;
+  height: 25px;
+}
+
+.mfdp_date footer>*
+{
+  float: left;
+  margin-left: 5px;
+}
+
+.mfdp_date footer div
+{
+//height: 100%;
+  padding-top: 4px;
+}
+
+.mfdp_date footer .mfdp_text
+{
+  width: 110px;
+}
+
+.mfdp_allDay input[type="text"]
+{
+  height: 20px;
+  width: 40px;
+  margin-left: 20px;
+}
+*/
+
+.mf_calendar .mf_notThisMonth
+{
+  color: #CCC;
+}
+
+.mf_calendar .mf_today
+{
+  color: #F90;
+  text-decoration: underline;
+}
+
+.mf_calendar .counter
+{
+  color: red;
+  text-align: left;
+  font-size: 9px;
+  padding-right: 4px;
+  display: block;
+  width: 10px;
+  overflow: hidden;
+  height: 15px;
+  margin-left: 0px;
+  position: absolute;
+}
+
+.mf_calendar .date{
+  margin: 2px 0;
+}
+
+body[lang='en-us'].mf_calendar .date{
+  margin-bottom: 8px;
+}
+
+.mf_calendar .local
+{
+  font-size: 12px;
+  margin: 3px 0;
+  color: #CCC;
+}
+
+.mf_calendar td.selected
+{
+  background-color: #666;
+  color: #FFF;
+}
+
+.mf_calendar th
+{
+  text-align: center;
+  border: 1px solid @border-color;
+}
+
+.mf_calendar td
+{
+  cursor: default;
+  min-height: 40px;
+  width: 14.3%;
+
+  &:last-child{
+    width: 14.2%;
+  }
+}
+
+.mf_calendar th
+{
+  height: 30px;
+  font-weight: bold;
+  background-color: #666;
+  color: #FFF;
+}

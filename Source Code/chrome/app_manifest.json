@@ -1,0 +1,30 @@
+{
+  "name": "Busy",
+  "version": "1.0.1",
+  "description": "__MSG_description__",
+  "default_locale": "en",
+  "omnibox": { "keyword" : "busy:" },
+  "manifest_version": 2,
+  "background": {
+    "page": "background.html"
+  },
+  "icons": {
+    "128": "images/icons/128.png",
+    "48": "images/icons/48.png",
+    "16": "images/icons/16.png"
+  },
+  "content_security_policy": "script-src 'self' https://api.imtime.com; object-src 'self'",
+  "permissions": [
+    "tabs",
+    "notifications",
+    "https://*.imtime.com/*",
+    "http://*.imtime.com/*",
+    "http://*.imtime.cn/*",
+    "unlimitedStorage"
+  ],
+   "app": {
+     "launch": {
+     "local_path": "main.html"
+     }
+   }
+}

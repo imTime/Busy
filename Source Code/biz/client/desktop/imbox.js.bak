@@ -1,0 +1,33 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: conis
+ * Date: 10/29/12
+ * Time: 7:08 下午
+ * 仅限于imbox内的调用
+ */
+(function(){
+	im.desktop.imbox = {
+		init: function(){
+			//只有在imbox内才禁止
+			if(!$.env.inBox){
+				im.mobile.disableTouchMove();
+			}
+		}
+	};
+
+	//页面准备好
+	$(document).ready(function(){
+		//初始化imbox，通知imbox并获取环境
+		im.mobile.imbox.init(function(){
+			//判断是Pad还是Phone
+			$.env.useSqlite = true;
+			$.env.apiServer = "http://api1.imtime.com/";
+			jQuery.support.cors = true;
+			if($.env.isPad){
+				im.page.pad.init();
+			}else{
+				im.page.phone.init();
+			};			//end if
+		});				//end init
+	});					//end ready
+})();

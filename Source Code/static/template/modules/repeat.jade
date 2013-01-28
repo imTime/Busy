@@ -1,0 +1,28 @@
+//-
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 11/4/12
+   Time: 10:25 下午
+   选择重复的模块
+
+#pnlRepeat.innerModule.mf_subfield
+  #lstRepeat.mf_listview.large
+  .spliter
+    div
+  ul#pnlRepeatStop.mf_tableview
+    li#rowLocalRepeat.mf_hide.local(data-type='checkbox')
+      //- 本地重复
+      if(isPhone)
+        label.caption #{lang.repeat.local}
+      #chkLocalRepeat.checkbox
+    li.neverStop(data-type='checkbox')
+      if(isPhone)
+        label.caption #{lang.repeat.neverStop}
+      #chkNeverStop.checkbox
+    //- 不要换成别的名称，和数据库保持一致
+    li.end(data-row='repeat.repeatStop')
+      label.caption#capRepeatEnd #{lang.repeat.end}
+      input#txtRepeatStop.date(type='text', autocomplete='off')
+
+  footer
+    button.round

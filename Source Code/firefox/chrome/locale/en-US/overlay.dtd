@@ -1,0 +1,8 @@
+<!ENTITY busy_for_imtime.label "Your localized menuitem">
+<!ENTITY busy_for_imtimeContext.label "Your Menuitem">
+<!ENTITY busy_for_imtimeContext.accesskey "Y">
+<!ENTITY busy_for_imtimeToolbarButton.label "Your Toolbar Button">
+<!ENTITY busy_for_imtimeToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY busy_for_imtimeSidebar.label "Your Sidebar">
+<!ENTITY busy_for_imtimeToolbar.name  "example">
+<!ENTITY busy_for_imtimeToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &busy_for_imtimeToolbar.name;">

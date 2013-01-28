@@ -1,0 +1,419 @@
+/*
+  适用于网站和平板、桌面版本
+*/
+
+@import "core";
+@import "datepicker";
+@import "expressEditor";
+@import "timeline";
+@import "sign";
+@import "calendarEditor";
+@import "activityEditor";
+
+#msgbox{
+  font-size: 2em;
+  padding: 20px;
+  border: 4px solid @text-color;
+  margin: 5px auto 0 auto;
+  .border-radius(10px);
+  left: 39%;
+}
+
+.mf_frame{
+  .screen-width();
+  margin: 0 auto;
+  text-align: left;
+}
+
+//模态窗口的样式
+.mf_modal
+{
+  margin: 94px auto 0 auto;
+  display: none;
+  min-width: 600px;
+  max-width: 700px;
+  width: 70%;
+  overflow: hidden;
+
+  footer{
+    text-align: right;
+    padding-top: 10px;
+  }
+}
+
+body > header
+{
+  overflow: hidden;
+  padding-top: 5px;
+
+  .logo{
+    float: left;
+    *{
+      display: block;
+      float: left;
+    }
+
+    span{
+      width: 60px;
+      height: 60px;
+      background-position: 0 -240px;
+    }
+
+    h1{
+      margin: 25px 0 0 10px;
+      font-size: 30px;
+      font-weight: bold;
+      font-family: arial;
+      position: relative;
+
+      label{
+        font-size: 12px;
+        position: absolute;
+        display: block;
+        top: -20px;
+        margin-left: 95px;
+        color: #CCC;
+      }
+    }
+  }
+
+  //如果宽度小于阈值时，则显示小号的logo，不带字体
+  /*
+  @media only screen and (max-width: @max-width),
+  only screen and (max-device-width: @max-width) {
+    .logo{
+      h1{
+        display: none;
+      }
+      margin-left: 10px;
+    }
+
+  } */
+}
+
+@media only screen
+and (min-device-width: 700px)
+and (max-device-width: 1024px)
+and (orientation:portrait) {
+/* For portrait layouts only */
+  body > header .logo h1{
+    display: none;
+  }
+
+  body > header .logo{
+    margin-left: 10px;
+  }
+
+  body #pnlFrame>aside{
+    width: 95%;
+    float: none;
+    position: absolute;
+    >*{
+      display: block;
+      float: left;
+      clear: both;
+    }
+
+    #pnlMonth{
+      width: 400px;
+      float: left;
+    }
+
+    .mf_listPanel{
+      float: right;
+      position: relative;
+      top: -320px;
+      left: -100px;
+    }
+  }
+  //aside和mainForm重新布局
+  body #pnlFrame section.content{
+    width: 100% !important;
+    margin-top: 350px;
+  }
+}
+
+//页脚
+body > footer
+{
+  margin-top: 10px;
+  width: 100%;
+  padding: 30px 0;
+  text-align: right;
+  font-size: 1.4em;
+  line-height: 1.4em;
+  background-color: #6f6c70;
+  color: #ffffff;
+
+  .language{
+    float: left;
+    margin-left: 5px;
+    @cell-width: 25px;
+    @width: 23px;
+    @y-pos: -200px;
+
+    a{
+      margin: 0 4px;
+      width: 23px;
+      height: 23px;
+      display: inline-block;
+      background-position: 0 @y-pos;
+
+      &.en{
+        background-position: -@cell-width * 2 @y-pos;
+      }
+
+      &.tw{
+        background-position: -@cell-width * 3 @y-pos;
+      }
+
+      &.hk{
+        background-position: -@cell-width @y-pos;
+      }
+    }
+  }
+
+}
+
+#toolbar
+{
+  float: right;
+  width: 620px;
+  border-radius: @radius;
+  .linear-gradient(rgba(64, 131, 206, 0.1), rgba(64, 131, 206, 0.1));
+  text-align: left;
+  height: 62px;
+
+  //搜索部分
+  .search{
+    position: relative;
+    top: -55px;
+    float: right;
+    width: 200px;
+    background-color: white;
+    border: 1px solid #F90;
+    margin: 10px 10px 0 0;
+    .border-radius();
+    display: block;
+    height: 30px;
+    text-align: right;
+
+    input{
+      border: 0;
+      float: left;
+      margin-left: 5px;
+      font-size: 1.4em;
+      .border-radius();
+      color: #666;
+      width: 80%;
+    }
+
+    .icon{
+      cursor: pointer;
+      float: left;
+      width: 20px;
+      height: 20px;
+      margin: 6px 10px 0 -25px;
+      position: absolute;
+      background-position: -100px -150px;
+    }
+
+  }
+
+  //菜单按钮
+  .menu a{
+    font-size: 1.6em;
+    color: #FFF;
+    display: inline-block;
+    overflow: hidden;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover{
+      color: #000;
+    }
+
+    >*{
+      display: block;
+      float: left;
+    }
+
+    label{
+      margin: 12px 5px 0 10px;
+      text-align: center;
+    }
+
+    span{
+      .imgMain();
+      width: 40px;
+      height: 40px;
+    }
+
+    &:first-child{
+      .border-radius(@radius 0 0 @radius);
+    }
+
+    &:last-child{
+      .border-radius(0 @radius @radius 0);
+    }
+
+    &.create{
+      .linear-gradient(rgba(219, 19, 243, 1), rgba(172, 3, 138, 1));
+    }
+
+    &.download, &.sync{
+      .linear-gradient(rgba(198, 215, 5, 1), rgba(54, 142, 6, 1));
+    }
+
+    &.member, &.option, &.profile{
+      .linear-gradient(rgba(125, 201, 254, 1), rgba(7, 88, 150, 1));
+      label{
+        min-width: 55px;
+      }
+    }
+
+    &.download span{
+      background-position: -50px 0;
+    }
+
+    &.member span{
+      background-position: -100px 0;
+    }
+
+    &.profile span{
+      background-position: -150px 0;
+    }
+
+    &.sync span{
+      background-position: -300px 0;
+    }
+
+    &.option span{
+      background-position: -200px 0;
+    }
+  }
+}
+
+#pnlFrame{
+  padding-top: 20px;
+  overflow: hidden;
+
+  >section, >aside{
+    float: left;
+    overflow: hidden;
+  }
+
+  >section{
+    width: 68%;
+    position: relative;
+    min-height: 400px;
+    //宽度低于1000，即将宽度设置到60%
+    @media only screen and (max-width: @max-width),
+    only screen and (max-device-width: @max-width) {
+      width: 63%;
+    }
+
+    .mainForm{
+      margin-top: 130px;
+    }
+  }
+
+  >aside{
+    width: 30%;
+    float: right;
+    min-width: 260px;
+
+    h3.caption{
+      font-size: 2em;
+    }
+
+    .mf_listPanel{
+      footer{
+        text-align: right;
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
+#fullscreen
+{
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  width: 100%;
+  height: 1024px;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
+  header{
+    margin-top: 10px;
+    text-align: right;
+    margin: 0 auto;
+    .screen-width(600px, 800px);
+    clear: both;
+    overflow: hidden;
+
+    h3{
+      float: left;
+      margin-top: 40px;
+      font-size: 3em;
+      margin-left: 30px;
+    }
+  }
+
+  .logo{
+    width: 60px;
+    height: 60px;
+    margin-top:15px;
+    float: left;
+    background-position: 0 -240px;
+  }
+
+  button{
+  //如果屏幕在1024以内，则离左边为0
+    margin: 54px 20px 0 0;
+    background-color: #7DC9FE;
+    color: #FFF;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 6px 6px 0 0;
+    width: 40px;
+    height: 35px;
+
+    &:hover{
+      background-color: #333;
+    }
+
+    span{
+      height: 20px;
+      width: 16px;
+      background-position: -275px -150px;
+    }
+  }
+
+  #btnBack span.icon{
+    background-position: -225px -150px;
+  }
+}
+
+#pnlClipCalendars{
+  border-color: #CCC;
+  .border-radius(6px);
+  min-height: 80px;
+
+  a{
+    padding: 10px;
+    font-size: 1.4em;
+    border-bottom: 1px solid  #CCC;
+
+    &:hover{
+      background: @border-color;
+    }
+
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+}

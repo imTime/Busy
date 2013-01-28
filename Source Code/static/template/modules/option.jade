@@ -1,0 +1,17 @@
+//-
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 10/25/12
+   Time: 9:04 下午
+   用于桌面版/Pad(imbox内)/Metro的选项功能
+
+#pnlOption.mf_modal
+  ul#pnlOptionMenu
+    li.sign.active(flag='sign') #{lang.option.menu.account}
+    li.setting(flag='setting') #{lang.option.menu.setting}
+  .content
+    #pnlOptSign
+      include sign
+    #pnlOptSetting.mf_hide
+      include setting
+

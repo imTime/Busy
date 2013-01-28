@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        id="http://www.imtime.com/busy"
+        version="1.0">
+    <name>Busy</name>
+    <description xml:lang="en">Cross-platform schedule tool</description>
+    <description xml:lang="zh-CN">跨平台的日程管理工具</description>
+    <author href="http://new.imtime.com/" email="opera@imtime.com">imTime</author>
+    <icon src="images/icons/64.png"/>
+    <content src="background.html" />
+    <content src="background.html" type="text/html" encoding="utf-8"/>
+    <access origin="http://imtime.com" subdomains="true"/>
+</widget>

@@ -1,0 +1,115 @@
+//-
+  手机版本主要分成三部分，日历/添加/timeline，其它模块采用slide方式显示
+  其它模块：
+  1.用户注册/登陆
+  2.选项
+  3.添加日历
+  4.选择重复
+  5.添加/管理提醒
+  6.设置日期和时间
+  7.选择状态
+  8.管理状态
+
+!!! 5
+html
+  include modules/head
+  body
+    //-
+    #fullscreen
+    #abs
+      #msgbox
+        .text
+      //选择日期模块
+      #pnlGo
+        #pnlMonth.mf_datepicker
+      //- 选择日期的模块，可以选择时间
+      #sldDatepicker.mf_slideup
+        include modules/phoneNav
+        .content
+          //-日历
+          #pnlDatepicker.mf_datepicker
+          //-
+            ul#pnlTimePicker
+              li.caption  小时
+              li.hour
+                #sliderHour
+              li.caption 分钟
+              li.minutes
+                #sliderMinutes
+              li.text
+          //时间
+          ul#pnlTimeView.mf_tableview
+            li.allDay(data-type='checkbox')
+              label.caption #{lang.timepicker.allDay}
+              #chkAllDay.checkbox
+            li.hours(data-type='input').accessoryNone
+              label.caption #{lang.timepicker.hours}
+              #sliderHour.slider
+            li.minutes(data-type='input').accessoryNone
+              label.caption #{lang.timepicker.minutes}
+              #sliderMinutes.slider
+          //-
+            li.memo.input(data-row='datepicker.time').accessoryNone
+              label.caption #{lang.timepicker.memo}
+              input#txtTime(type='text', readonly='readonly')
+
+      //- 公用列表
+      #sldListView.mf_slideup
+        include modules/phoneNav
+        #scrollListView.content
+          .scroller
+            #lstListview.mf_tableview.right.mf_listview
+      //- 用户注册/登陆模块
+      include modules/sign
+      //- 选择选择重复类型
+      #sldRepeat.mf_slideup
+        include modules/phoneNav
+        .content
+          include modules/repeat
+      #sldReminders.mf_slideup
+        include modules/phoneNav
+        #scrollReminders.content
+          .scroller
+            #lstReminders.mf_listview.edit
+            #tipsNoReminders.mf_bubble.mf_hide #{lang.actEditor.noReminders}
+      //- 编辑提醒
+      #sldReminderEditor.mf_slideup
+        //(style='display: block')
+        include modules/phoneNav
+        .content
+          //- 编辑提醒
+          include modules/reminderEditor
+
+      //- 选择状态
+        #sldStatus.mf_slideup
+          include modules/phoneNav
+          .content
+            ul#lstStatus.listview
+      //- 编辑状态
+      #sldStatusEditor.mf_slideup
+        include modules/phoneNav
+        .content
+          include modules/statusEditor
+      //- 编辑日历
+      #sldCalendarEditor.mf_slideup
+        include modules/phoneNav
+        .content
+          include modules/calendarEditor
+      //-日历列表
+    #pnlFrame
+      #pnlContent
+        //-timeline的page
+        section#pnlTimeline.mf_phonePage
+          include modules/phoneNav
+          section.content
+            .scroller
+              include  modules/timeline
+        section#pnlActivityEditor.mf_phonePage
+          include modules/phoneNav
+          section.content
+            .scroller
+              include modules/activityTabs
+              include modules/todoEditor
+              include modules/birthdayEditor
+              include modules/normalEditor
+              button#btnDeleteActivity.bar.blue #{lang.actEditor.button.del}

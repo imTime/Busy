@@ -1,0 +1,18 @@
+//-
+  日历的编辑器，增加编辑日历用
+
+section#pnlCalendarEditor.mf_modal
+  ul.mf_editor.mf_tableview
+    li.title
+      label.caption #{lang.calEditor.title}
+      input(type='text',placeholder='#{lang.calEditor.titleTips}')#txtCalTitle
+    li.color.accessoryNone
+      label.caption  #{lang.calEditor.color}
+      #lstCalendarRibbon.mf_ribbon
+  //-
+    li.tags
+      label.caption #{lang.calEditor.tags}
+      input(type='text')
+  //- 手机版不用加上footer，由header部分处理
+  footer
+    button.normal.highlight#btnSaveCalendar #{lang.calEditor.button.save}

@@ -1,0 +1,7 @@
+{
+	host = "api1.imtime.com";
+	password = "";
+	rules = (
+		"^\\/.+\\.(js|css|jpeg|jpg|png|html)$",
+	);
+}

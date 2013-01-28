@@ -1,0 +1,18 @@
+//
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 11/4/12
+   Time: 10:21 下午
+   选项设置
+
+ul.setting.mf_editor#pnlOptSetting
+  li.notification
+    label.caption #{lang.option.setting.notification}
+    #chkOptNotification.checkbox(flag='notification')
+  li.badge
+    label.caption #{lang.option.setting.badge}
+    #chkOptBadge.checkbox(flag='badge')
+  if(clientType == e.Client.Air)
+    li.autoHide
+      label.caption #{lang.option.setting.autoHide}
+      #chkOptAutoHide.checkbox(flag='autoHide')

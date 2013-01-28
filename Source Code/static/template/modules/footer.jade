@@ -1,0 +1,23 @@
+footer
+  if clientType == e.Client.WebSite
+    div.language#language
+      - var languages = ["en", "cn", "tw", "hk"]
+      each item in languages
+        a(class='#{item} imgMain', href='http://#{item}.#{host}')
+
+  | #{lang._.slogan}
+  br
+  | ©imTime.com 2012
+
+//-产品环境才加上google的统计代码
+  if production && clientType == e.Client.WebSite
+    script(language='javascript')
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-10124901-4']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

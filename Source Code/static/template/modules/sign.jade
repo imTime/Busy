@@ -1,0 +1,36 @@
+//- 用户登陆
+section#pnlSign.mf_modal.mf_slideup
+  //-登陆
+  ul.signIn.mf_tableview
+    li.mail
+      label.caption #{lang.sign.signIn.mail}
+      input#txtSignInMail(type='email', autocomplete='off',
+        placeholder='#{lang.sign.signIn.mailPlaceholder}')
+    li.password
+      label.caption #{lang.sign.signIn.password}
+      input#txtSignInPwd(type='password', autocomplete='off',
+        placeholder='#{lang.sign.signIn.passwordPlaceholder}')
+  //- 注册
+  ul.signUp.mf_tableview
+    li.mail
+      label.caption #{lang.sign.signUp.mail}
+      input#txtSignUpMail(type='email', autocomplete='off',
+        placeholder='#{lang.sign.signUp.mailPlaceholder}')
+    li.password
+      label.caption #{lang.sign.signUp.password}
+      input#txtSignUpPwd(type='password', autocomplete='off',
+        placeholder='#{lang.sign.signUp.passwordPlaceholder}')
+    li.confirmPassword
+      label.caption #{lang.sign.signUp.confirmPassword}
+      input#txtSignUpRePwd(type='password', autocomplete='off',
+        placeholder='#{lang.sign.signUp.confirmPasswordPlaceholder}')
+  footer
+    p.memo #{lang.sign.memo}
+    .link
+      a#lnkSignIn.link #{lang.sign.signUp.signIn}
+      a#lnkSignUp.mf_hide.link #{lang.sign.signIn.signUp}
+      a#lnkForgotPwd.mf_hide.link(href='http://imtime.com/forgot-password.html')
+        | #{lang.sign.signIn.forgotPwd}
+    .button
+      button.normal.highlight#btnSignIn #{lang.sign.button.signIn}
+      button.normal.highlight#btnSignUp #{lang.sign.button.signUp}

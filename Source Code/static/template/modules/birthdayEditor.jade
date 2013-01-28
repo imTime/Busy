@@ -1,0 +1,29 @@
+//-
+   Created with JetBrains WebStorm.
+   User: conis
+   Date: 11/4/12
+   Time: 8:55 下午
+   生日编辑器
+
+ul#pnlBirthdayEditor.mf_editor.birthday.mf_tableview
+  li.title.input(data-row='birthdayEditor.title')
+    label.caption #{lang.birthdayEditor.who}
+    input#txtWhoBirth(type='text', autocomplete='off')
+  //- 手机版要加上日历选择的字段
+  if(isPhone)
+    li.calendar(data-row='birthdayEditor.calendar')
+      label.caption  #{lang.birthdayEditor.calendar}
+      #textBirthCalendar.content.mf_iconLink
+  li.when(data-row='birthdayEditor.begin')
+    label.caption #{lang.birthdayEditor.birthday}
+    input#txtBirthday(type='text', autocomplete='off').date
+    if(!isPhone)
+      #chkBirthLocal.checkbox
+  //- 本地化日历
+  if(isPhone)
+    li.local.mf_hide#rowBirthLocal(data-row='birthdayEditor.local', data-type='checkbox')
+      label.caption #{lang.birthdayEditor.local}
+      #chkBirthLocal.checkbox
+  li.reminders(data-row='birthdayEditor.reminders')
+    label.caption #{lang.birthdayEditor.reminders}
+    a#lnkBirthReminder.link
